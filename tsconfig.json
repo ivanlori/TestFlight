@@ -1,0 +1,31 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["dom", "dom.iterable", "es6"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "sourceMap": true,
+    "isolatedModules": true,
+    "downlevelIteration": false,
+    "rootDir": "./",
+    "outDir": "dist/",
+    "baseUrl": "src/",
+    "watch": true,
+    "noUnusedLocals": true,
+    "types": ["react", "node"],
+    "pretty": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "esclude": ["node_modules", "src/**/.test.tsx"],
+  "include": ["src"]
+}
