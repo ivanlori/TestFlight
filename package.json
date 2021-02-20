@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "craco build && mv build docs",
     "test": "craco test",
     "proxy": "node proxy.js",
     "eject": "react-scripts eject"
