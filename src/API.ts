@@ -10,7 +10,7 @@ export const getAvailableAirports = async () => {
 	try {
 		const response = await axios.get(`${baseUrl}/airports/all`);
 
-		return response.data;
+		return response.data.data;
 	} catch (error) {
 		console.log(error);
 	}
@@ -20,7 +20,7 @@ export const getAvailableAirlines = async () => {
 	try {
 		const response = await axios.get(`${baseUrl}/airlines/all`);
 
-		return response.data;
+		return response.data.data;
 	} catch (error) {
 		console.log(error);
 	}
@@ -30,7 +30,7 @@ export const getAvailableFlights = async () => {
 	try {
 		const response = await axios.get(`${baseUrl}/flights/all`);
 
-		return response.data;
+		return response.data.data;
 	} catch (error) {
 		console.log(error);
 	}
