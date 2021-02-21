@@ -29,9 +29,9 @@ const Flights: FC<Props> = ({
 	return (
 		<div
 			key={id}
-			className={`${!main ? 'ml-3' : 'shadow'} flex-wrap border-2 bg-white p-3 my-2 flex justify-around items-center`}
+			className={`${!main ? 'ml-3' : 'flex-wrap shadow'} border-2 bg-white p-3 my-2 flex justify-around items-center`}
 		>
-			<div className="text-left">
+			<div className={`${!main && 'w-1/4 text-left'}`}>
 				{
 					airlineId &&
 					<Airline id={airlineId} />
@@ -41,7 +41,7 @@ const Flights: FC<Props> = ({
 					<b>Main solution</b>
 				}
 			</div>
-			<div className="flex justify-between">
+			<div className={`${!main && 'w-1/4 text-left'} flex justify-between`}>
 				{
 					main &&
 					<>{from} ➔ {to}</>
@@ -61,7 +61,7 @@ const Flights: FC<Props> = ({
 			</div>
 			{
 				price &&
-				<div className="flex flex-col text-right">{`${price.toFixed(2)} $`}</div>
+				<div className={`${!main && 'w-1/4 text-right'}`}>{`${price.toFixed(2)} $`}</div>
 			}
 			{
 				main &&
