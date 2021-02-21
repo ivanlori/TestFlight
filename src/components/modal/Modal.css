@@ -1,0 +1,21 @@
+.modal__content {
+  @apply p-4;
+  @apply flex;
+  @apply flex-col;
+  @apply align-bottom;
+  @apply bg-white;
+  @apply rounded-lg;
+  @apply overflow-hidden;
+  @apply shadow-xl;
+  @apply transform;
+  @apply transition-all;
+	width: 500px;
+	height: 500px;
+}
+ 
+.modal__header {
+  @apply flex;
+  @apply justify-between;
+  @apply mb-3;
+  @apply items-center;
+}

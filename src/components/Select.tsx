@@ -3,7 +3,7 @@ import { RootStateOrAny, useSelector } from 'react-redux';
 import Select from 'react-select';
 
 type Props = {
-	onChange: (label: string, id: number) => void;
+	onChange: (label: string) => void;
 }
 
 const WithCallbacks: FC<Props> = ({ onChange }: Props): ReactElement => {
@@ -24,7 +24,7 @@ const WithCallbacks: FC<Props> = ({ onChange }: Props): ReactElement => {
 					label: 'Select airport...'
 				}
 			}
-			onChange={(e: any) => onChange(e.label, e.value)}
+			onChange={(e: any) => onChange(e.label)}
 			options={
 				airports.map((el: any) => {
 					return {

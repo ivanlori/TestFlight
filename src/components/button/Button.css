@@ -1,0 +1,14 @@
+.btn {
+	@apply p-2;
+	@apply my-2;
+	@apply bg-blue-500;
+	@apply text-white;
+	@apply rounded-md;
+	@apply ring-blue-300;
+	@apply ring-offset-2;
+}
+
+.btn:focus {
+	@apply outline-none;
+	@apply ring-2;
+}

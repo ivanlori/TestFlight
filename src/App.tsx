@@ -7,13 +7,12 @@ import {
 	getAvailableAirports,
 	getAvailableFlightsBetweenPlaces,
 	getAvailableFlights
-} from './API';
+} from './Api';
 import {
 	airportsSettedAction,
 	airlinesSettedAction,
 	flightsSettedAction
 } from './store';
-import './App.css';
 import Flight from './components/Flight';
 
 const App: FC = (): ReactElement => {
@@ -21,10 +20,8 @@ const App: FC = (): ReactElement => {
 	const setAirlines = useDispatch();
 	const setFlights = useDispatch();
 	const [loader, setLoader] = useState<boolean>(false);
-	const [fromLabel, setFromLabel] = useState<string>('');
-	const [toLabel, setToLabel] = useState<string>('');
-	const [fromId, setFromId] = useState<number>();
-	const [toId, setToId] = useState<number>();
+	const [fromLabel, setFrom] = useState<string>('');
+	const [toLabel, setTo] = useState<string>('');
 	const [totalPrice, setTotalPrice] = useState<number>();
 	const [availableFlights, setAvailableFlights] = useState<[]>([]);
 
@@ -61,8 +58,6 @@ const App: FC = (): ReactElement => {
 		getAirports();
 		getAirlines();
 		getFlights();
-		console.log(toId)
-		console.log(fromId)
 	}, []);
 
 	useEffect(() => {
@@ -76,26 +71,22 @@ const App: FC = (): ReactElement => {
 			<div className="grid grid-cols-2 gap-4 p-5">
 				<div className="flex flex-col">
 					<label>From: </label>
-					<Select onChange={(label, id) => {
-						setFromLabel(label);
-						setFromId(id);
-					}} />
+					<Select onChange={(label) => setFrom(label)} />
 				</div>
 				<div className="flex flex-col">
 					<label>To: </label>
-					<Select onChange={(label, id) => {
-						setToLabel(label);
-						setToId(id);
-					}} />
+					<Select onChange={(label) => setTo(label)} />
 				</div>
 			</div>
-			<div className="m-5 text-center">
-				<ClipLoader
-					size={40}
-					css="mx-auto my-0 block"
-					color="#000"
-					loading={loader}
-				/>
+			<div className="mx-5 text-center">
+				<div className="h-10">
+					<ClipLoader
+						size={30}
+						css="mx-auto my-0 block"
+						color="#000"
+						loading={loader}
+					/>
+				</div>
 				{
 					availableFlights.length === 0 && !loader
 						?
@@ -103,13 +94,16 @@ const App: FC = (): ReactElement => {
 						:
 						<>
 							<ul>
-								<Flight
-									price={totalPrice || null}
-									from={fromLabel}
-									to={toLabel}
-									main={true}
-									direct={String(availableFlights.length) === String(1)}
-								/>
+								{
+									availableFlights.length > 0 &&
+									<Flight
+										price={totalPrice || null}
+										from={fromLabel}
+										to={toLabel}
+										main={true}
+										direct={String(availableFlights.length) === String(1)}
+									/>
+								}
 								{
 									availableFlights.map((flight: any) => {
 										return <Flight {...flight} />

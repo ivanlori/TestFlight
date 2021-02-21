@@ -1,6 +1,7 @@
 import React, { FC, ReactElement } from 'react';
 import Airline from './Airline';
 import Airport from './Airport';
+import Button from '../components/button';
 
 type Props = {
 	id?: number;
@@ -28,7 +29,7 @@ const Flights: FC<Props> = ({
 	return (
 		<div
 			key={id}
-			className={`${!main && 'ml-3'} border-2 bg-white p-3 my-2 flex justify-around items-center`}
+			className={`${!main ? 'ml-3' : 'shadow'} border-2 bg-white p-3 my-2 flex justify-around items-center`}
 		>
 			<div className="w-1/5 text-left">
 				{
@@ -48,7 +49,7 @@ const Flights: FC<Props> = ({
 				{
 					arrivalAirportId && departureAirportId &&
 					<>
-						<Airport id={arrivalAirportId} /> ➔ <Airport id={departureAirportId} />
+						<Airport id={departureAirportId} /> ➔ <Airport id={arrivalAirportId} />
 					</>
 				}
 			</div>
@@ -58,10 +59,13 @@ const Flights: FC<Props> = ({
 					<span className="mx-3">{direct ? 'Direct flight' : 'With stop-overs'}</span>
 				}
 			</div>
-			<div className="flex flex-col w-1/5">{`${price?.toFixed(2)} €`}</div>
+			{
+				price &&
+				<div className="flex flex-col w-1/5 text-right">{`${price.toFixed(2)} $`}</div>
+			}
 			{
 				main &&
-				<button className="button bg-blue">Book Now!</button>
+				<Button label="Book now!" />
 			}
 		</div>
 	);
