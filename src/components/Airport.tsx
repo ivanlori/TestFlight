@@ -21,14 +21,15 @@ const Airport: FC<Props> = ({ id }: Props): ReactElement => {
 				airportsData.map((airport: any, index: number) => airport.id === id &&
 					<div
 						key={index}
-						className="mx-3"
+						className="mx-3 flex flex-col"
 					>
-						{airport.codeIata} <span className="cursor-pointer hover:underline" onClick={() => {
+						{airport.codeIata}
+						<span className="cursor-pointer underline" onClick={() => {
 							setModal(true);
 							setLat(airport.latitude);
 							setLng(airport.longitude);
 							setModalTitle(airport.codeIata);
-						}}>Map</span>
+						}}>show Map</span>
 					</div>
 				)
 			}
